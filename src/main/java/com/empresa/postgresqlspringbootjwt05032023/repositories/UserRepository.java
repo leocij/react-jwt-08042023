@@ -45,4 +45,19 @@ public class UserRepository {
 
         return users;
     }
+
+    public void save(User user) {
+        try {
+            String url = "jdbc:postgresql://localhost:5432/postgresql_springboot_jwt_05032023_db";
+            String myUser = "postgres";
+            String myPassword = "postgres";
+            String sql_query = "insert into users (name, created_at, updated_at) values (?, current_timestamp, current_timestamp);";
+            Connection connection = DriverManager.getConnection(url, myUser, myPassword);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql_query);
+            preparedStatement.setString(1, user.getName());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(System.err);
+        }
+    }
 }
