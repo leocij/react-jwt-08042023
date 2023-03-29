@@ -3,6 +3,9 @@ package com.empresa.postgresqlspringbootjwt05032023.controllers;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 import java.util.List;
 
 import com.empresa.postgresqlspringbootjwt05032023.services.UserService;
@@ -28,5 +31,12 @@ public class UserController {
 
         // return "Hello World";
         return users;
+    }
+
+    @PostMapping
+    public void store(@RequestBody User user) {
+        // System.out.println(user.getName());
+
+        userService.store(user);
     }
 }
