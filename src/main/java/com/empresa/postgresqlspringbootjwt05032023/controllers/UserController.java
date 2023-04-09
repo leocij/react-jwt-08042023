@@ -5,12 +5,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
 import com.empresa.postgresqlspringbootjwt05032023.services.UserService;
 import com.empresa.postgresqlspringbootjwt05032023.models.User;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/users")
 public class UserController {
