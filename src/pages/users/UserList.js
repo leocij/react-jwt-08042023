@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
-import * as userService from "../services/UserService";
+import * as userService from "../../services/UserService";
 
 export default function UserList() {
 
