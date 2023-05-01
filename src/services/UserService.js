@@ -4,3 +4,7 @@ export const index = async () => {
     const response = await apiAxios.get('/users');
     return response.data;
 }
+
+export const postUser = async ({name}) => {
+    await apiAxios.post("/users", {name});
+}

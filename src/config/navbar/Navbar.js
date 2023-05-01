@@ -22,7 +22,7 @@ export default function Navbar() {
                 aria-label="Toggle navigation"
                 onClick={() => setIsOpen(!isOpen)}
             >
-                <span className="text-white">Menu</span>
+                <span className="navbar-brand">Menu</span>
             </button>
             <div className={`${isOpen ? 'show' : ''} collapse navbar-collapse`} id="navbar01">
                 <ul className="navbar-nav mr-auto">
