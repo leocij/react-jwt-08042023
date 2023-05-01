@@ -27,7 +27,7 @@ export default function Navbar() {
             <div className={`${isOpen ? 'show' : ''} collapse navbar-collapse`} id="navbar01">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
-                        <NavLink to="/home" className="nav-link" onClick={handleToggle}>Home</NavLink>
+                        <NavLink to="/" className="nav-link" onClick={handleToggle}>Home</NavLink>
                     </li>
                     <li>
                         <NavLink to="/user-list" className="nav-link" onClick={handleToggle}>Users</NavLink>
