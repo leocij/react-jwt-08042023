@@ -11,7 +11,7 @@ export default function Pages() {
         <BrowserRouter>
             <Navbar />
             <Routes>
-                <Route exact path="/home" element={<Home />} />
+                <Route exact path="/" element={<Home />} />
                 <Route exact path="/user-list" element={<UserList />} />
             </Routes>
         </BrowserRouter>
