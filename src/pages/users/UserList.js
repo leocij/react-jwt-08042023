@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 import * as userService from "../../services/UserService";
+import { useNavigate } from "react-router-dom";
 
 export default function UserList() {
 
     const [users, setUsers] = useState([]);
     const [userError, setUserError] = useState('')
+    const navigate = useNavigate();
+    // const id = 10;
 
     useEffect(() => {
         reloadUsers();
@@ -21,10 +24,25 @@ export default function UserList() {
         }
     }
 
-    console.log(users);
+    const onAdd = () => {
+        navigate("/user-form");
+    }
+
+    // const onShow = () => {
+    //     navigate("/user-show", {replace: false, state: id});
+    // }
+
 
     return (
         <>
+            <div className="card">
+                <div className="card-body">
+                        {/* <label>Search:&nbsp;&nbsp;</label>
+                        <input type="text" onChange={(event) => handleSearch(event)} />
+                        &nbsp;&nbsp;&nbsp;&nbsp; */}
+                        <button className="btn btn-outline-primary" onClick={onAdd}>Add</button>  
+                </div>
+            </div>
             <div className="card">
                 <div className="card-body">
                     <div className="row">
