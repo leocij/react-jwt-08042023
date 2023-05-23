@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
 
 import com.empresa.postgresqlspringbootjwt05032023.services.CredentialService;
 import com.empresa.postgresqlspringbootjwt05032023.models.Credential;
@@ -18,6 +21,13 @@ public class CredentialController {
 
     public CredentialController(CredentialService credentialService) {
         this.credentialService = credentialService;
+    }
+
+    @GetMapping
+    public List<Credential> index() {
+        List<Credential> credentials = credentialService.index();
+
+        return credentials;
     }
 
     @PostMapping
