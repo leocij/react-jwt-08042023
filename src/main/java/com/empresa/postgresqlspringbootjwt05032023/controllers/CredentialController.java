@@ -14,7 +14,11 @@ import com.empresa.postgresqlspringbootjwt05032023.models.Credential;
 @RequestMapping("/credentials")
 public class CredentialController {
 
-    CredentialService credentialService = new CredentialService();
+    private CredentialService credentialService;
+
+    public CredentialController(CredentialService credentialService) {
+        this.credentialService = credentialService;
+    }
 
     @PostMapping
     public void store(@RequestBody Credential credential) {
