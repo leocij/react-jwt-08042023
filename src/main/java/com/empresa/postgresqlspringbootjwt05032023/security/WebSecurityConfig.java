@@ -18,7 +18,7 @@ public class WebSecurityConfig {
             csrf.disable();
         });
         http.authorizeHttpRequests((authorize) -> {
-            authorize.requestMatchers("/credentials")
+            authorize.requestMatchers("/auth/signin")
             .permitAll()
             .anyRequest()
             .authenticated();

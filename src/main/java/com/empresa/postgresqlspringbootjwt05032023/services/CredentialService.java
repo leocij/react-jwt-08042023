@@ -22,6 +22,10 @@ public class CredentialService {
     public List<Credential> index() {
         return credentialRepository.findAll();
     }
+
+    public Credential getCredentialByEmail(String email) {
+        return credentialRepository.getCredentialByEmail(email);
+    }
     
     public void store(Credential credential) {
 
