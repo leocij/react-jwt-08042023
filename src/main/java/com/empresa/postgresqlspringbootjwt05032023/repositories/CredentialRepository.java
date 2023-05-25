@@ -40,6 +40,34 @@ public class CredentialRepository {
         return credentials;
     }
 
+    public Credential getCredentialByEmail(String email) {
+
+        Credential credential = new Credential();
+
+        try {
+            String url = "jdbc:postgresql://localhost:5432/postgresql_springboot_jwt_05032023_db";
+            String myUser = "postgres";
+            String myPassword = "postgres";
+            String sql_query = "select * from credentials where email = ? limit 1;";
+            Connection connection = DriverManager.getConnection(url, myUser, myPassword);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql_query);
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                credential.setId(resultSet.getInt("id"));
+                credential.setEmail(resultSet.getString("email"));
+                credential.setPassword(resultSet.getString("password"));
+                credential.setCreatedAt(resultSet.getTimestamp("created_at"));
+                credential.setUpdatedAt(resultSet.getTimestamp("updated_at"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(System.err);
+        }
+
+        return credential;
+    }
+
     public void save(Credential credential) {
         try {
             String url = "jdbc:postgresql://localhost:5432/postgresql_springboot_jwt_05032023_db";
