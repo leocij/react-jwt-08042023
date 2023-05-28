@@ -31,9 +31,19 @@ public class AuthController {
         Credential credencialByEmail = credentialService.getCredentialByEmail(email);
 
         if (credencialByEmail.getEmail() == null) {
-            return new ResponseEntity<>("The email " + email + " was not found", HttpStatus.OK);
+            return new ResponseEntity<>("The email " + email + " was not found", HttpStatus.FORBIDDEN);
         }
 
-        return new ResponseEntity<>(credencialByEmail, HttpStatus.OK);
+        String password = credential.getPassword();
+        String passwordByEmail = credencialByEmail.getPassword();
+        Boolean passwordValidated = credentialService.validatePassword(password, passwordByEmail);
+
+        if (!passwordValidated) {
+            return new ResponseEntity<>("Invalid password", HttpStatus.FORBIDDEN);
+        }
+
+        String token = credentialService.generateToken(credential);
+
+        return new ResponseEntity<>(token, HttpStatus.OK);
     }
 }
