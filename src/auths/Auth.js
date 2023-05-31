@@ -7,7 +7,7 @@ import * as AuthService from "../services/AuthService";
 
 export default function Auth() {
     const [authToken, setAuthToken] = useState("");
-    const [statusToken, setStatusToken] = useState(1);
+    const [swichToken, setSwichToken] = useState(1);
     const [statusError, setStatusError] = useState("");
 
     useEffect(() => {
@@ -18,27 +18,27 @@ export default function Auth() {
 
     const checkToken = async (token) => {
         try {
-            const {status_token, status_error} = await AuthService.getCheckToken(token);
+            const {statusToken, statusError} = await AuthService.getCheckToken(token);
 
-            if (status_token) {
-                setStatusToken(2);
+            if (statusToken) {
+                setSwichToken(2);
             } else {
-                setStatusToken(3);
-                setStatusError(status_error);
+                setSwichToken(3);
+                setStatusError(statusError);
             }
         } catch (error) {
             console.error(error);
-            setStatusToken(4);
+            setSwichToken(4);
         }
     }
 
-    if (statusToken === 1) {
+    if (swichToken === 1) {
         return <Loading />
-    } else if (statusToken === 2) {
+    } else if (swichToken === 2) {
         return <Pages />
-    } else if (statusToken === 3) {
-        return <Signin />
-    } else if (statusToken === 4) {
+    } else if (swichToken === 3) {
+        return <Signin statusError={statusError} />
+    } else if (swichToken === 4) {
         return <LoadError />
     }
 }
