@@ -41,21 +41,21 @@ public class AuthController {
         String authorization = httpHeaders.getFirst("authorization");
 
         if (authorization == null) {
-            return new ResponseEntity<>(checkTokenResponse(false, "Authorization is empty"), /*401*/HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(checkTokenResponse(false, "Authorization is empty"), HttpStatus.OK);
         }
 
         // System.out.println(authorization.split(" ")[0]);
         if (!authorization.split(" ")[0].equals("Bearer")) {
-            return new ResponseEntity<>(checkTokenResponse(false, "Authorization type Bearer was not sent"), /*401*/HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(checkTokenResponse(false, "Authorization type Bearer was not sent"), HttpStatus.OK);
         }
 
         String token = authorization.split(" ")[1];
 
         try {
             Jwts.parser().setSigningKey("SECRET_KEY").parseClaimsJws(token);
-            return new ResponseEntity<>(checkTokenResponse(true, ""), /*200*/HttpStatus.OK);
+            return new ResponseEntity<>(checkTokenResponse(true, ""), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(checkTokenResponse(false, e.getMessage()), /*401*/HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(checkTokenResponse(false, e.getMessage()), HttpStatus.OK);
         }
     }
 
