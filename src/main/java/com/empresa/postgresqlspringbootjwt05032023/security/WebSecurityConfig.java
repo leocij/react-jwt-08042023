@@ -9,13 +9,21 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import com.empresa.postgresqlspringbootjwt05032023.security.JwtAuthTokenFilter;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
 
     @Bean
+    public JwtAuthTokenFilter jwtAuthTokenFilter() {
+        return new JwtAuthTokenFilter();
+    }
+
+    @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
+        http.cors();
         http.csrf((csrf) -> {
             csrf.disable();
         });
@@ -25,6 +33,7 @@ public class WebSecurityConfig {
             .anyRequest()
             .authenticated();
         });
+        http.addFilterBefore(jwtAuthTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 

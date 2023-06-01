@@ -36,7 +36,7 @@ public class AuthController {
     @GetMapping("/check-token")
     public ResponseEntity<?> checkToken(@RequestHeader HttpHeaders httpHeaders) {
 
-        // System.out.println(httpHeaders);
+        // System.out.println("AuthController ---> " + httpHeaders);
         // System.out.println(httpHeaders.getFirst("authorization"));
         String authorization = httpHeaders.getFirst("authorization");
 
