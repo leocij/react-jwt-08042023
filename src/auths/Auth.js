@@ -6,19 +6,19 @@ import Signin from "./Signin";
 import * as AuthService from "../services/AuthService";
 
 export default function Auth() {
-    const [authToken, setAuthToken] = useState("");
+    // const [authToken, setAuthToken] = useState("");
     const [swichToken, setSwichToken] = useState(1);
     const [statusError, setStatusError] = useState("");
 
     useEffect(() => {
-        const localToken = localStorage.getItem("auth-token");
-        setAuthToken(localToken);
-        checkToken(localToken);
+        // const localToken = localStorage.getItem("auth-token");
+        // setAuthToken(localToken);
+        checkToken();
     }, []);
 
-    const checkToken = async (token) => {
+    const checkToken = async () => {
         try {
-            const {statusToken, statusError} = await AuthService.getCheckToken(token);
+            const {statusToken, statusError} = await AuthService.getCheckToken();
 
             if (statusToken) {
                 setSwichToken(2);

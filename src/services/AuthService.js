@@ -6,7 +6,7 @@ const headers = {
     }
 }
 
-export const getCheckToken = async (token) => {
+export const getCheckToken = async () => {
     const response = await ApiAxios.get('/auth/check-token', headers)
     return response.data
 }
