@@ -22,23 +22,11 @@ public class UserController {
     @GetMapping
     public List<User> index() {
         List<User> users = userService.index();
-
-        // for (int i = 0; i < users.size(); i++) {
-        //     System.out.println("Id: " + users.get(i).getId());
-        //     System.out.println("Name: " + users.get(i).getName());
-        //     System.out.println("CreatedAt: " + users.get(i).getCreatedAt());
-        //     System.out.println("UpdatedAt: " + users.get(i).getUpdatedAt());
-        //     System.out.println();
-        // }
-
-        // return "Hello World";
         return users;
     }
 
     @PostMapping
     public void store(@RequestBody User user) {
-        // System.out.println(user.getName());
-
         userService.store(user);
     }
 }
