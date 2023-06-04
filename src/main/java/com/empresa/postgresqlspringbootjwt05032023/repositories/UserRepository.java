@@ -46,6 +46,32 @@ public class UserRepository {
         return users;
     }
 
+    public User findUserById(int id) {
+        User user = new User();
+
+        try {
+            String url = "jdbc:postgresql://localhost:5432/postgresql_springboot_jwt_05032023_db";
+            String myUser = "postgres";
+            String myPassword = "postgres";
+            String sql_query = "select * from users where id = ?;";
+            Connection connection = DriverManager.getConnection(url, myUser, myPassword);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql_query);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                user.setId(resultSet.getInt("id"));
+                user.setName(resultSet.getString("name"));
+                user.setCreatedAt(resultSet.getTimestamp("created_at"));
+                user.setUpdatedAt(resultSet.getTimestamp("updated_at"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(System.err);
+        }
+
+        return user;
+    }
+
     public void save(User user) {
         try {
             String url = "jdbc:postgresql://localhost:5432/postgresql_springboot_jwt_05032023_db";

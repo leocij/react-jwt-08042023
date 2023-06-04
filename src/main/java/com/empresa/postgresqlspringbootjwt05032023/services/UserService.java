@@ -13,6 +13,10 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public User show(int id) {
+        return userRepository.findUserById(id);
+    }
+
     public void store(User user) {
         userRepository.save(user);
     }
