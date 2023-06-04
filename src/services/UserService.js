@@ -11,6 +11,11 @@ export const index = async () => {
     return response.data;
 }
 
+export const show = async (id) => {
+    const response = await apiAxios.get(`/users/${id}`, headers);
+    return response.data;
+}
+
 export const postUser = async ({name}) => {
     await apiAxios.post("/users", {name}, headers);
 }
