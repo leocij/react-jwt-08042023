@@ -73,11 +73,12 @@ public class CredentialRepository {
             String url = "jdbc:postgresql://localhost:5432/postgresql_springboot_jwt_05032023_db";
             String myUser = "postgres";
             String myPassword = "postgres";
-            String sql_query = "insert into credentials (email, password, created_at, updated_at) values (?, ?, current_timestamp, current_timestamp);";
+            String sql_query = "insert into credentials (user_id, email, password, created_at, updated_at) values (?, ?, ?, current_timestamp, current_timestamp);";
             Connection connection = DriverManager.getConnection(url, myUser, myPassword);
             PreparedStatement preparedStatement = connection.prepareStatement(sql_query);
-            preparedStatement.setString(1, credential.getEmail());
-            preparedStatement.setString(2, credential.getPassword());
+            preparedStatement.setInt(1, credential.getUserId());
+            preparedStatement.setString(2, credential.getEmail());
+            preparedStatement.setString(3, credential.getPassword());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace(System.err);

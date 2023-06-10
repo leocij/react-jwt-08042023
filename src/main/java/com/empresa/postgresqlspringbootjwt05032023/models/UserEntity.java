@@ -1,15 +1,15 @@
 package com.empresa.postgresqlspringbootjwt05032023.models;
 
 import java.util.Date;
-import com.empresa.postgresqlspringbootjwt05032023.models.User;
+import java.util.List;
+import com.empresa.postgresqlspringbootjwt05032023.models.Credential;
 
-public class Credential {
+public class UserEntity {
     private int id;
-    private int userId;
-    private String email;
-    private String password;
+    private String name;
     private Date createdAt;
     private Date updatedAt;
+    private List<Credential> credentials;
 
     public int getId() {
         return this.id;
@@ -19,28 +19,12 @@ public class Credential {
         this.id = id;
     }
 
-    public int getUserId() {
-        return this.userId;
+    public String getName() {
+        return this.name;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public String getEmail() {
-        return this.email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Date getCreatedAt() {
@@ -57,5 +41,13 @@ public class Credential {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public List<Credential> getCredentials() {
+        return this.credentials;
+    }
+
+    public void setCredentials(List<Credential> credentials) {
+        this.credentials = credentials;
     }
 }

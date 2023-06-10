@@ -12,14 +12,23 @@ import org.springframework.http.HttpStatus;
 import java.util.List;
 import com.empresa.postgresqlspringbootjwt05032023.services.UserService;
 import com.empresa.postgresqlspringbootjwt05032023.models.User;
+import com.empresa.postgresqlspringbootjwt05032023.models.UserEntity;
+import com.empresa.postgresqlspringbootjwt05032023.models.Credential;
+import com.empresa.postgresqlspringbootjwt05032023.services.CredentialService;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/users")
 public class UserController {
 
-    UserService userService = new UserService();
+    private CredentialService credentialService;
 
+    public UserController(CredentialService credentialService) {
+        this.credentialService = credentialService;
+    }
+
+    UserService userService = new UserService();
+    
     @GetMapping
     public List<User> index() {
         List<User> users = userService.index();
@@ -33,7 +42,27 @@ public class UserController {
     }
 
     @PostMapping
-    public void store(@RequestBody User user) {
-        userService.store(user);
+    public void store(@RequestBody UserEntity userEntity) {
+
+        // System.out.println(userEntity.getName());
+        // List<Credential> credentials = userEntity.getCredentials();
+        // for(Credential credential: credentials) {
+        //     System.out.println(credential.getEmail());
+        //     System.out.println(credential.getPassword());
+        // }
+
+        User user = new User();
+        user.setName(userEntity.getName());
+
+        int userIdReturned = userService.store(user);
+
+        // System.out.println(userIdReturned);
+
+        List<Credential> credentials = userEntity.getCredentials();
+
+        for(Credential credential: credentials) {
+            credential.setUserId(userIdReturned);
+            credentialService.store(credential);
+        }
     }
 }
