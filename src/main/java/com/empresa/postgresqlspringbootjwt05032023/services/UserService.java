@@ -17,7 +17,7 @@ public class UserService {
         return userRepository.findUserById(id);
     }
 
-    public void store(User user) {
-        userRepository.save(user);
+    public int store(User user) {
+        return userRepository.save(user);
     }
 }
