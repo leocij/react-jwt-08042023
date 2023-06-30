@@ -37,8 +37,8 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> show(@PathVariable int id) {
-        User user = userService.show(id);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        UserEntity userEntity = userService.show(id);
+        return new ResponseEntity<>(userEntity, HttpStatus.OK);
     }
 
     @PostMapping
