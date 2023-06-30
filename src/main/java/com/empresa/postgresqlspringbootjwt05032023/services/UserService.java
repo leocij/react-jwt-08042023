@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.empresa.postgresqlspringbootjwt05032023.repositories.UserRepository;
 import com.empresa.postgresqlspringbootjwt05032023.models.User;
+import com.empresa.postgresqlspringbootjwt05032023.models.UserEntity;
 
 public class UserService {
 
@@ -13,7 +14,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User show(int id) {
+    public UserEntity show(int id) {
         return userRepository.findUserById(id);
     }
 
