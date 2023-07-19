@@ -8,19 +8,27 @@ export default function UserShow() {
     const navigate = useNavigate();
     const [user, setUser] = useState({});
     const [userError, setUserError] = useState("");
+    const [credentials, setCredentials] = useState([]);
 
     useEffect(() => {
-        reloadUser(id);
+        if (id) {
+            reloadUser(id);
+        }  
     }, [id]);
 
     const reloadUser = async (id) => {
         try {
             const user = await userService.show(id);
             setUser(user);
+            setCredentials(user.credentials);
         } catch (error) {
             console.error(error);
             setUserError(error);
         }
+    }
+
+    const addCredential = (id) => {
+        navigate("/credential-form", {replace: false, state: id});
     }
 
     const onBack = () => {
@@ -62,6 +70,20 @@ export default function UserShow() {
                                                 <label htmlFor="name" className="form-control-label">Name</label>
                                                 <span className="form-control">{user.name}</span>
                                             </div>
+                                            {
+                                                credentials.map((c) => (
+                                                    <div key={c.id}>
+                                                        {
+                                                            c.email ?
+                                                            <div className="form-group">
+                                                                <label htmlFor="email" className="form-control-label">Email - {c.id}</label>
+                                                                <span className="form-control">{c.email}</span>
+                                                            </div>
+                                                            : <button className="btn btn-outline-primary mt-2 mb-2 mr-2" onClick={() => addCredential(user.id)}>add Credential</button>
+                                                        }
+                                                    </div>
+                                                ))
+                                            }
                                         </form>
                                     </div>
                                     <div className="card-footer">
