@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import * as credentialService from "../../services/CredentialService";
 
 export default function CredentialForm() {
-
+    const UserId = useLocation().state;
+    console.log("User Id ---> " + UserId);
     
     const [emailInvalid, setEmailInvalid] = useState("");
     const [email, setEmail] = useState("");
