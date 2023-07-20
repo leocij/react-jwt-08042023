@@ -79,7 +79,7 @@ export default function UserShow() {
                                                                 <label htmlFor="email" className="form-control-label">Email - {c.id}</label>
                                                                 <span className="form-control">{c.email}</span>
                                                             </div>
-                                                            : <button className="btn btn-outline-primary mt-2 mb-2 mr-2" onClick={() => addCredential(user.id)}>add Credential</button>
+                                                            : <button type={'button'} className="btn btn-outline-primary mt-2 mb-2 mr-2" onClick={() => addCredential(user.id)}>add Credential</button>
                                                         }
                                                     </div>
                                                 ))
