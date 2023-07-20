@@ -3,14 +3,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 import * as credentialService from "../../services/CredentialService";
 
 export default function CredentialForm() {
-    const UserId = useLocation().state;
-    console.log("User Id ---> " + UserId);
-    
+    const userId = useLocation().state;
     const [emailInvalid, setEmailInvalid] = useState("");
     const [email, setEmail] = useState("");
     const [passwordInvalid, setPasswordInvalid] = useState("");
     const [password, setPassword] = useState("");
     const [seeThePassword, setSeeThePassword] = useState(false);
+    const [response, setResponse] = useState("");
 
     const navigate = useNavigate();
     const emailFocus = useRef(null);
@@ -43,8 +42,12 @@ export default function CredentialForm() {
             setPasswordInvalid("Insert a valid password");
         } else {
             try {
-                await credentialService.postCredential({email, password});
-                navigate(-1);
+                const response = await credentialService.postCredential({userId, email, password});
+                if (response) {
+                    setResponse(response);
+                } else {
+                    navigate(-1);
+                }
             } catch (error) {
                 console.error(error);
             }
@@ -66,6 +69,11 @@ export default function CredentialForm() {
                     <button className="btn btn-outline-primary border pl-5" onClick={onBack}>&nbsp;&nbsp;Back&nbsp;&nbsp;</button>
                 </div>
                 <div className="col-md-4 p-2">
+                    <div className="row text-danger">
+                        <p>{
+                                response ? response : ""
+                            }</p>
+                    </div>
                     <div className="card">
                         <div className="card-header text-center">
                             <h4 className="card-text">Add Credential</h4>

@@ -1,5 +1,12 @@
 import apiAxios from "../config/ApiAxios";
 
-export const postCredential = async ({email, password}) => {
-    await apiAxios.post("/credentials", {email, password});
+const headers = {
+    headers: {
+        authorization: `Bearer ${localStorage.getItem('auth-token')}`
+    }
+}
+
+export const postCredential = async ({userId, email, password}) => {
+    const response = await apiAxios.post("/credentials", {userId, email, password}, headers);
+    return response.data;
 }
