@@ -32,7 +32,7 @@ public class CredentialService {
         return credentialRepository.getCredentialByEmail(email);
     }
     
-    public void store(Credential credential) {
+    public String store(Credential credential) {
 
         // System.out.println(credential.getPassword());
         String password = credential.getPassword();
@@ -40,7 +40,7 @@ public class CredentialService {
         // System.out.println(bcryptPassword);
         credential.setPassword(bcryptPassword);
 
-        credentialRepository.save(credential);
+        return credentialRepository.save(credential);
     }
 
     public Boolean validatePassword(String password, String passwordByEmail) {

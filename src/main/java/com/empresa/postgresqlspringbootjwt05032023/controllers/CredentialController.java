@@ -31,10 +31,10 @@ public class CredentialController {
     }
 
     @PostMapping
-    public void store(@RequestBody Credential credential) {
+    public String store(@RequestBody Credential credential) {
         // System.out.println(credential.getEmail());
         // System.out.println(credential.getPassword());
 
-        credentialService.store(credential);
+        return credentialService.store(credential);
     }
 }
