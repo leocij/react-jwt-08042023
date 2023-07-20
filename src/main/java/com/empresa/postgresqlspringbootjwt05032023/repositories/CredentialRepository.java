@@ -68,7 +68,7 @@ public class CredentialRepository {
         return credential;
     }
 
-    public void save(Credential credential) {
+    public String save(Credential credential) {
         try {
             String url = "jdbc:postgresql://localhost:5432/postgresql_springboot_jwt_05032023_db";
             String myUser = "postgres";
@@ -81,7 +81,10 @@ public class CredentialRepository {
             preparedStatement.setString(3, credential.getPassword());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
+            System.out.println("Mensagem --> " + e.getMessage());
             e.printStackTrace(System.err);
+            return e.getMessage();
         }
+        return "";
     }
 }
