@@ -8,6 +8,10 @@ public class ClinicService {
 
     ClinicRepository clinicRepository = new ClinicRepository();
 
+    public ClinicResponse index() {
+        return clinicRepository.findAll();
+    }
+
     public ClinicResponse store(Clinic clinic) {
         return clinicRepository.save(clinic);
     }
