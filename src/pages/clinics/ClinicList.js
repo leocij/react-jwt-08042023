@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import moment from "moment";
 import * as clinicService from "../../services/ClinicService";
 
 export default function ClinicList() {
@@ -21,19 +22,44 @@ export default function ClinicList() {
         }
     }
     return (
-        <div>
-            {
-                error
-                ? (<div><h2>Something is wrong, notify your System Administrator</h2></div>)
-                : clinics.map(c => (
-                    <div key={c.id}>
-                        <p>{c.cnpj}</p>
-                        <p>{c.corporateName}</p>
-                        <p>{c.createdAt}</p>
-                        <p>{c.updatedAt}</p>
+        <>
+            <div className="card">
+                <div className="card-body">
+                    <div className="row">
+                        {
+                            error
+                            ? (<div><h2>Something is wrong, notify your System Administrator</h2></div>)
+                            : clinics.map(c => (
+                                <div className="col-md-3 p-2" key={c.id}>
+                                    <div className="card">
+                                        <div className="card-header"></div>
+                                        <div className="card-body">
+                                                <div className="row">
+                                                    <div className="col-auto">
+                                                        <img
+                                                            src="https://png.pngtree.com/element_origin_min_pic/16/11/03/dda587d35b48fd01947cf38931323161.jpg"
+                                                            alt="Avatar"
+                                                            width="60"
+                                                            height="60"
+                                                        />
+                                                    </div>
+                                                    <div className="col">
+                                                        <p>{c.id}</p>
+                                                        <p>{c.corporateName}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="card-body">
+                                                <p>{c.createdAt ? "Created at " + moment(c.createdAt).fromNow() : "There is no date record in the database"}</p>
+                                                <p>{c.createdAt ? "Updated at " + moment(c.updatedAt).fromNow() : "There is no date record in the database"}</p>
+                                            </div>
+                                    </div>
+                                </div>
+                            ))
+                        }
                     </div>
-                ))
-            }
-        </div>
+                </div>
+            </div>
+        </>
     )
 }
