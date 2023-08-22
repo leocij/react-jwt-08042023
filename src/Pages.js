@@ -3,6 +3,7 @@ import React from "react";
 // https://reactrouter.com/en/v6.3.0/getting-started/overview
 import { BrowserRouter, Routes, Route } from 'react-router-dom'; //yarn add react-router-dom
 import Navbar from './config/navbar/Navbar';
+import ClinicForm from "./pages/clinics/ClinicForm";
 import ClinicList from "./pages/clinics/ClinicList";
 import CredentialForm from "./pages/credentials/CredentialForm";
 import Home from './pages/Home';
@@ -21,6 +22,7 @@ export default function Pages() {
                 <Route exact path="/user-show" element={<UserShow />} />
                 <Route exact path="/credential-form" element={<CredentialForm />} />
                 <Route exact path="/clinic-list" element={<ClinicList />} />
+                <Route exact path="/clinic-form" element={<ClinicForm />} />
             </Routes>
         </BrowserRouter>
     )

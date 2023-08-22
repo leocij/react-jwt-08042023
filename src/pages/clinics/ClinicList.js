@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 import * as clinicService from "../../services/ClinicService";
+import { useNavigate } from "react-router-dom";
 
 export default function ClinicList() {
     const [clinics, setClinics] = useState([]);
     const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() => { reloadClinics(); }, []);
 
@@ -21,8 +23,21 @@ export default function ClinicList() {
             setError(error);
         }
     }
+
+    const onAdd = () => {
+        navigate("/clinic-form");
+    }
+
     return (
         <>
+            <div className="card">
+                <div className="card-body">
+                        {/* <label>Search:&nbsp;&nbsp;</label>
+                        <input type="text" onChange={(event) => handleSearch(event)} />
+                        &nbsp;&nbsp;&nbsp;&nbsp; */}
+                        <button className="btn btn-outline-primary" onClick={onAdd}>Add</button>  
+                </div>
+            </div>
             <div className="card">
                 <div className="card-body">
                     <div className="row">
