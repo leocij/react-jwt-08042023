@@ -1,7 +1,7 @@
 package com.empresa.postgresqlspringbootjwt05032023.services;
 
 import com.empresa.postgresqlspringbootjwt05032023.models.Clinic;
-import com.empresa.postgresqlspringbootjwt05032023.models.ClinicResponse;
+import com.empresa.postgresqlspringbootjwt05032023.responses.ClinicResponse;
 import com.empresa.postgresqlspringbootjwt05032023.repositories.ClinicRepository;
 
 public class ClinicService {

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import com.empresa.postgresqlspringbootjwt05032023.models.Clinic;
-import com.empresa.postgresqlspringbootjwt05032023.models.ClinicResponse;
+import com.empresa.postgresqlspringbootjwt05032023.responses.ClinicResponse;
 
 public class ClinicRepository {
 
