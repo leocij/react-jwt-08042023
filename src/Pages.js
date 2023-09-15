@@ -6,6 +6,7 @@ import Navbar from './config/navbar/Navbar';
 import ClinicForm from "./pages/clinics/ClinicForm";
 import ClinicList from "./pages/clinics/ClinicList";
 import CredentialForm from "./pages/credentials/CredentialForm";
+import ExpertiseForm from "./pages/expertises/ExpertiseForm";
 import ExpertiseList from "./pages/expertises/ExpertiseList";
 import Home from './pages/Home';
 import UserForm from './pages/users/UserForm';
@@ -25,6 +26,7 @@ export default function Pages() {
                 <Route exact path="/clinic-list" element={<ClinicList />} />
                 <Route exact path="/clinic-form" element={<ClinicForm />} />
                 <Route exact path="/expertise-list" element={<ExpertiseList />} />
+                <Route exact path="/expertise-form" element={<ExpertiseForm />} />
             </Routes>
         </BrowserRouter>
     )

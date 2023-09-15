@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 import * as expertiseService from "../../services/ExpertiseService";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function ExpertiseList() {
     const [expertises, setExpertises] = useState([]);
     const [error, setError] = useState("");
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     useEffect(() => { reloadExpertises(); }, []);
 
@@ -24,20 +24,17 @@ export default function ExpertiseList() {
         }
     }
 
-    // const onAdd = () => {
-    //     navigate("/expertise-form");
-    // }
+    const onAdd = () => {
+        navigate("/expertise-form");
+    }
 
     return (
         <>
-            {/* <div className="card">
+            <div className="card">
                 <div className="card-body">
-                        <label>Search:&nbsp;&nbsp;</label>
-                        <input type="text" onChange={(event) => handleSearch(event)} />
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <button className="btn btn-outline-primary" onClick={onAdd}>Add</button>  
+                    <button className="btn btn-outline-primary" onClick={onAdd}>Add</button>  
                 </div>
-            </div> */}
+            </div>
             <div className="card">
                 <div className="card-body">
                     <div className="row">
