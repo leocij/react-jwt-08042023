@@ -38,6 +38,9 @@ export default function Navbar() {
                     <li>
                         <NavLink to="/expertise-list" className="nav-link" onClick={handleToggle}>Expertises</NavLink>
                     </li>
+                    <li>
+                        <NavLink to="/expert-list" className="nav-link" onClick={handleToggle}>Experts</NavLink>
+                    </li>
                 </ul>
             </div>
         </nav>
