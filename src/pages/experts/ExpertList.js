@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 import * as expertService from "../../services/ExpertService";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function ExpertList() {
     const [experts, setExperts] = useState([]);
     const [error, setError] = useState("");
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     useEffect(() => { reloadExperts(); }, []);
 
@@ -24,17 +24,17 @@ export default function ExpertList() {
         }
     }
 
-    // const onAdd = () => {
-    //     navigate("/expert-form");
-    // }
+    const onAdd = () => {
+        navigate("/expert-form");
+    }
 
     return (
         <>
-            {/* <div className="card">
+            <div className="card">
                 <div className="card-body">
                     <button className="btn btn-outline-primary" onClick={onAdd}>Add</button>  
                 </div>
-            </div> */}
+            </div>
             <div className="card">
                 <div className="card-body">
                     <div className="row">
