@@ -11,7 +11,7 @@ export const index = async () => {
     return response.data;
 }
 
-// export const store = async ({expert}) => {
-//     const response = await apiAxios.post("/experts", {expert}, headers);
-//     return response.data;
-// }
+export const store = async ({expert}) => {
+    const response = await apiAxios.post("/experts", {expert}, headers);
+    return response.data;
+}
