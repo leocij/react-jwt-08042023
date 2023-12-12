@@ -11,6 +11,7 @@ import ExpertiseList from "./pages/expertises/ExpertiseList";
 import ExpertForm from "./pages/experts/ExpertForm";
 import ExpertList from "./pages/experts/ExpertList";
 import Home from './pages/Home';
+import ScheduleForm from "./pages/schedules/ScheduleForm";
 import UserForm from './pages/users/UserForm';
 import UserList from './pages/users/UserList';
 import UserShow from './pages/users/UserShow';
@@ -31,6 +32,7 @@ export default function Pages() {
                 <Route exact path="/expertise-form" element={<ExpertiseForm />} />
                 <Route exact path="/expert-list" element={<ExpertList />} />
                 <Route exact path="/expert-form" element={<ExpertForm />} />
+                <Route exact path="/schedule-form" element={<ScheduleForm />} />
             </Routes>
         </BrowserRouter>
     )
